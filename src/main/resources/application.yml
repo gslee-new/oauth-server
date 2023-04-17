@@ -12,6 +12,11 @@ spring:
   config:
     activate:
       on-profile: local
+  devtools:
+    livereload:
+      enabled: true
+    restart:
+      enabled: true
 
 hydra:
   base-path: http://localhost:4445
