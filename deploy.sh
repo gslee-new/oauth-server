@@ -25,4 +25,4 @@ else
 fi
 
 echo "> jar Name: oauth-server-0.0.1-SNAPSHOT.jar"
-nohup java -jar build/libs/oauth-server-0.0.1-SNAPSHOT.jar &
+nohup java -jar build/libs/oauth-server-0.0.1-SNAPSHOT.jar --spring.profiles.active=aws &
