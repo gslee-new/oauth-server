@@ -8,6 +8,9 @@ spring:
     cache: false
 
 ---
+server:
+  port: 8080
+
 spring:
   config:
     activate:
@@ -20,13 +23,6 @@ spring:
 
 hydra:
   base-path: http://localhost:4445
-
-#Properties Encrypt
-jasypt:
-  encryptor:
-    bean: jasyptStringEncryptor
-    password: 5F15BA1834B2FAA9302651DD246C03006CBFA649
-
 ---
 server:
   port: 8080
@@ -34,8 +30,7 @@ server:
 spring:
   config:
     activate:
-    on-profile: aws
+      on-profile: aws
 
 hydra:
   base-path: http://52.79.232.182:4445
-
