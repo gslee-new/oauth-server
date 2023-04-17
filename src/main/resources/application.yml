@@ -28,10 +28,14 @@ jasypt:
     password: 5F15BA1834B2FAA9302651DD246C03006CBFA649
 
 ---
+server:
+  port: 8080
+
 spring:
   config:
     activate:
-      on-profile: aws
+    on-profile: aws
 
 hydra:
   base-path: http://52.79.232.182:4445
+
