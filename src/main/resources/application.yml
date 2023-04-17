@@ -1,0 +1,32 @@
+spring:
+  profiles:
+    default: local
+
+  thymeleaf:
+    prefix: classpath:templates/
+    suffix: .html
+    cache: false
+
+---
+spring:
+  config:
+    activate:
+      on-profile: local
+
+hydra:
+  base-path: http://localhost:4445
+
+#Properties Encrypt
+jasypt:
+  encryptor:
+    bean: jasyptStringEncryptor
+    password: 5F15BA1834B2FAA9302651DD246C03006CBFA649
+
+---
+spring:
+  config:
+    activate:
+      on-profile: aws
+
+hydra:
+  base-path: http://52.79.232.182:4445

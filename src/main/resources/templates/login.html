@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+
+    $(function(){
+        $("#check").click(function(){
+            let chk = $(this).is(":checked");
+            if (chk) $("#remember").val(true);
+            else $("#remember").val(false);
+        });
+    });
+
+</script>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+<h2>Log In</h2>
+<form action="/login/usernamePassword" method="post">
+    <label >loginChallenge:</label>
+    <input type="text" name="loginChallenge" th:value="${loginChallenge}" /> <br>
+    <br>
+    <label >아이디:</label>
+    <input type="text" name="loginEmail" placeholder="아이디를 입력하세요." /><br>
+    <label >비밀번호:</label>
+    <input type="password" name="loginPassword" placeholder="비밀번호를 입력하세요." /><br>
+
+    <label for="check">Remember me:</label>
+    <input type="checkbox" id="check" name="check" checked /><br>
+    <input type="hidden" id="remember" name="remember" value="true">
+    <input type="submit" name="submit" value="Log in" />
+</form>
+
+
+</body>
+</html>

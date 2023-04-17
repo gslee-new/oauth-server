@@ -1,0 +1,24 @@
+version: "0.1"
+services:
+  hydra:
+    image: oryd/hydra:v2.0.3
+    ports:
+      - "4444:4444"
+      - "4445:4445"
+    command: serve -c /etc/config/hydra/hydra.yml all --dev
+    volumes:
+      - type: bind
+        source: ./hydra
+        target: /etc/config/hydra
+    environment:
+      # - DSN=mysql://root:secret@tcp(172.19.0.2:3306)/mysql?max_conns=20&max_idle_conns=4
+      # - STRATEGIES_ACCESS_TOKEN=jwt
+      # - OIDC_SUBJECT_IDENTIFIERS_SUPPORTED_TYPES=public
+      - URLS_LOGIN=http://52.79.232.182:8080/login
+      - URLS_CONSENT=http://52.79.232.182:8080/consent
+      - URLS_LOGOUT=http://52.79.232.182:8080/logout
+    restart: unless-stopped
+networks:
+  default:
+    external:
+      name: oauth_net

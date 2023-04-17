@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+<form action="/consent" method="post">
+    <input type="hidden" name="consentChallenge" th:value="${consentChallenge}" />
+
+    Requested Scopes<br>
+
+    <div th:each="scope : ${scopes}">
+        <input type="checkbox" name="scopes" id="scopes-${scope}" th:value="${scope}" checked>
+        <label th:for="${scope}">[[${scope}]]</label><br>
+    </div>
+    <br>
+    <label for="remember">Remember me:</label>
+    <input type="checkbox" id="remember" name="remember" checked /><br>
+    <input type="submit" id="accept" name="submit" value="Allow access" />
+</form>
+</body>
+</html>

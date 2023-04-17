@@ -1,0 +1,40 @@
+serve:
+  cookies:
+    same_site_mode: Strict
+
+
+#Sets the data source name
+dsn: "mysql://root:secret@tcp(172.19.0.3:3306)/mysql?max_conns=20&max_idle_conns=4"
+
+urls:
+  self:
+    issuer: http://172.17.14.24:4444
+  consent: http://127.0.0.1:3000/consent
+  login: http://127.0.0.1:3000/login
+  logout: http://127.0.0.1:3000/logout
+
+tracing:
+  service_name: Ory Hydra
+  provider: jaeger
+  providers:
+    jaeger:
+      propagation: jaeger
+      max_tag_value_length: 0
+      local_agent_address: 172.19.0.4:6831
+
+secrets:
+  system:
+    - youReallyNeedToChangeThis
+
+oidc:
+  subject_identifiers:
+    supported_types:
+      - public
+      - pairwise
+    pairwise:
+      salt: youReallyNeedToChangeThis
+
+log:
+  format: json_pretty
+  level: info
+  leak_sensitive_values: true
