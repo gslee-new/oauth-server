@@ -2,10 +2,12 @@ package concise.oauth.login;
 
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import lombok.val;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+@Slf4j
 @RestController
 @RequestMapping("login")
 @RequiredArgsConstructor
@@ -21,7 +23,9 @@ public class LoginController {
 
      @GetMapping
     public ModelAndView fetchesLoginInfo(@RequestParam("login_challenge") String loginChallenge) {
+        log.info(">>>>>>>>>>>>> /login : loginChallenge : {}", loginChallenge);
         LoginResult loginResult = loginService.processInitialLoginRequest(loginChallenge);
+
 
         return LoginModelAndViewMapper.toView(loginResult, loginChallenge);
     }
