@@ -22,7 +22,7 @@ public class LoginModelAndViewMapper {
         if (loginResult instanceof LoginDeniedInvalidCredentials) {
             log.info("222222222222222222222");
             val loginModelAndView = new ModelAndView();
-            loginModelAndView.setViewName("/login");
+            loginModelAndView.setViewName("login");
             loginModelAndView.addObject("loginChallenge", loginChallenge);
             loginModelAndView.addObject("error", "invalid credentials try again");
 
@@ -32,7 +32,7 @@ public class LoginModelAndViewMapper {
         if (loginResult instanceof LoginNotSkippableDisplayLoginUI) {
             log.info("33333333333333333333");
             val loginModelAndView = new ModelAndView();
-            loginModelAndView.setViewName("/login");
+            loginModelAndView.setViewName("login");
             loginModelAndView.addObject("loginChallenge", loginChallenge);
 
             return loginModelAndView;
@@ -40,7 +40,7 @@ public class LoginModelAndViewMapper {
 
         if (loginResult instanceof LoginRequestNotFound) {
             log.info("444444444444444444");
-            return new ModelAndView("/home");
+            return new ModelAndView("home");
         }
 
         throw new IllegalStateException("Unknown response type: " + loginResult.getClass());
