@@ -31,6 +31,11 @@ spring:
   config:
     activate:
       on-profile: aws
+  thymeleaf:
+    prefix: classpath:templates/
+    suffix: .html
+    cache: false
 
 hydra:
   base-path: http://52.79.232.182:4445
+
