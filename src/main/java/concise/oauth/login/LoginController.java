@@ -6,6 +6,7 @@ import lombok.val;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.view.RedirectView;
 
 @RestController
 @RequestMapping("login")
@@ -22,8 +23,8 @@ public class LoginController {
                                                       @RequestParam(name = "response_type") String responseType,
                                                       @RequestParam(name = "scope") String scope,
                                                       @RequestParam(name = "state") String state) {
-        val loginModelAndView = new ModelAndView();
-        loginModelAndView.setViewName("index");
+        val loginModelAndView = new ModelAndView(new RedirectView(hydraPublicPath + "/oauth2/auth"));
+//        loginModelAndView.setViewName("index");
         loginModelAndView.addObject("clientId", clientId);
         loginModelAndView.addObject("redirectUri", redirectUri);
         loginModelAndView.addObject("responseType", responseType);
