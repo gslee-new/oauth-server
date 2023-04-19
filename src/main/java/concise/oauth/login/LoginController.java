@@ -25,13 +25,11 @@ public class LoginController {
                                                       @RequestParam(name = "state") String state) {
         val loginModelAndView = new ModelAndView(new RedirectView(hydraPublicPath + "/oauth2/auth"));
 //        loginModelAndView.setViewName("index");
-        loginModelAndView.addObject("client_idd", client_id);
+        loginModelAndView.addObject("client_id", client_id);
         loginModelAndView.addObject("redirect_uri", redirect_uri);
         loginModelAndView.addObject("response_type", response_type);
         loginModelAndView.addObject("scope", scope);
         loginModelAndView.addObject("state", state);
-
-        loginModelAndView.addObject("hydraPublicPath", hydraPublicPath);
         return loginModelAndView;
     }
 
