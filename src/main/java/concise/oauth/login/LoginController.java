@@ -2,8 +2,8 @@ package concise.oauth.login;
 
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import lombok.val;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -13,11 +13,16 @@ import org.springframework.web.servlet.ModelAndView;
 public class LoginController {
     @NonNull final LoginService loginService;
 
-    @GetMapping("page")
-    public ModelAndView checkClientAndReturnLoginPage() {
-        val loginModleAndView = new ModelAndView();
-        loginModleAndView.setViewName("/index");
-        return loginModleAndView;
+    @Value("${hydra.public-path}")
+    private String hydraPublicPath;
+
+    @GetMapping(value = "page")
+    public ModelAndView checkClientAndReturnLoginPage(@RequestParam String clientId) {
+        val loginModelAndView = new ModelAndView();
+        loginModelAndView.setViewName("/index");
+        loginModelAndView.addObject("clientId", clientId);
+        loginModelAndView.addObject("hydraPublicPath", hydraPublicPath);
+        return loginModelAndView;
     }
 
      @GetMapping

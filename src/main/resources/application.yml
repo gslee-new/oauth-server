@@ -23,6 +23,7 @@ spring:
 
 hydra:
   base-path: http://localhost:4445
+  public-path: http://localhost:4444
 ---
 server:
   port: 8080
@@ -38,4 +39,5 @@ spring:
 
 hydra:
   base-path: http://52.79.232.182:4445
+  public-path: http://52.79.232.182:4444
 
