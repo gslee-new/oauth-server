@@ -19,7 +19,7 @@ public class LoginController {
     @GetMapping(value = "page")
     public ModelAndView checkClientAndReturnLoginPage(@RequestParam String clientId) {
         val loginModelAndView = new ModelAndView();
-        loginModelAndView.setViewName("/index");
+        loginModelAndView.setViewName("index");
         loginModelAndView.addObject("clientId", clientId);
         loginModelAndView.addObject("hydraPublicPath", hydraPublicPath);
         return loginModelAndView;
