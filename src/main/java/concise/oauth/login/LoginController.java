@@ -18,16 +18,16 @@ public class LoginController {
     private String hydraPublicPath;
 
     @GetMapping(value = "page")
-    public ModelAndView checkClientAndReturnLoginPage(@RequestParam(name = "client_id") String clientId,
-                                                      @RequestParam(name = "redirect_uri") String redirectUri,
-                                                      @RequestParam(name = "response_type") String responseType,
+    public ModelAndView checkClientAndReturnLoginPage(@RequestParam(name = "client_id") String client_id,
+                                                      @RequestParam(name = "redirect_uri") String redirect_uri,
+                                                      @RequestParam(name = "response_type") String response_type,
                                                       @RequestParam(name = "scope") String scope,
                                                       @RequestParam(name = "state") String state) {
         val loginModelAndView = new ModelAndView(new RedirectView(hydraPublicPath + "/oauth2/auth"));
 //        loginModelAndView.setViewName("index");
-        loginModelAndView.addObject("clientId", clientId);
-        loginModelAndView.addObject("redirectUri", redirectUri);
-        loginModelAndView.addObject("responseType", responseType);
+        loginModelAndView.addObject("client_idd", client_id);
+        loginModelAndView.addObject("redirect_uri", redirect_uri);
+        loginModelAndView.addObject("response_type", response_type);
         loginModelAndView.addObject("scope", scope);
         loginModelAndView.addObject("state", state);
 
