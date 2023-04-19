@@ -17,10 +17,19 @@ public class LoginController {
     private String hydraPublicPath;
 
     @GetMapping(value = "page")
-    public ModelAndView checkClientAndReturnLoginPage(@RequestParam String clientId) {
+    public ModelAndView checkClientAndReturnLoginPage(@RequestParam(name = "client_id") String clientId,
+                                                      @RequestParam(name = "redirect_uri") String redirectUri,
+                                                      @RequestParam(name = "response_type") String responseType,
+                                                      @RequestParam(name = "scope") String scope,
+                                                      @RequestParam(name = "state") String state) {
         val loginModelAndView = new ModelAndView();
         loginModelAndView.setViewName("index");
         loginModelAndView.addObject("clientId", clientId);
+        loginModelAndView.addObject("redirectUri", redirectUri);
+        loginModelAndView.addObject("responseType", responseType);
+        loginModelAndView.addObject("scope", scope);
+        loginModelAndView.addObject("state", state);
+
         loginModelAndView.addObject("hydraPublicPath", hydraPublicPath);
         return loginModelAndView;
     }
